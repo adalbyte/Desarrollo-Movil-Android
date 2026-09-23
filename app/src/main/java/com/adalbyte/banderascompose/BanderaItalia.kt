@@ -19,5 +19,7 @@ fun BanderaItalia(modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun BanderaItaliaPreview() {
-    BanderaScreenPreview();
+    Surface {
+        BanderaItalia(modifier = Modifier.fillMaxSize())
+    }
 }
