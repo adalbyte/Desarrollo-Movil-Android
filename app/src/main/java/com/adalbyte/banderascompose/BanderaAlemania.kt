@@ -7,36 +7,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import com.adalbyte.banderascompose.screens.BanderaScreen
+import com.adalbyte.banderascompose.screens.BanderaScreenPreview
 
 @Composable
 fun BanderaAlemania(modifier: Modifier = Modifier) {
-    Column(modifier = modifier.fillMaxSize()) {
-        Row(
-            modifier = Modifier
-                .weight(1f)
-                .fillMaxWidth()
-                .background(Color(0xFF000000))
-        ) {}
-        Row(
-            modifier = Modifier
-                .weight(1f)
-                .fillMaxWidth()
-                .background(Color(0xFFDD0000))
-
-        ) {}
-        Row(
-            modifier = Modifier
-                .weight(1f)
-                .fillMaxWidth()
-                .background(Color(0xFFFFCE00))
-        ) {}
-    }
+    BanderaScreen();
 }
 
 @Preview(showBackground = true)
 @Composable
 fun BanderaAlemaniaPreview() {
-    Surface {
-        BanderaAlemania(modifier = Modifier.fillMaxSize())
-    }
+    BanderaScreenPreview();
 }
