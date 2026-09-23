@@ -19,5 +19,7 @@ fun BanderaFrancia(modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun BanderaFranciaPreview() {
-    BanderaScreenPreview();
+    Surface {
+        BanderaFrancia(modifier = Modifier.fillMaxSize())
+    }
 }
