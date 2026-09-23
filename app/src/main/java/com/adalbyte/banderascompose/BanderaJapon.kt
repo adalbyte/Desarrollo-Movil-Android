@@ -13,20 +13,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.adalbyte.banderascompose.screens.BanderaScreen
 
 @Composable
 fun BanderaJapon(modifier: Modifier = Modifier) {
-    Box(modifier = Modifier
-        .fillMaxSize()
-        .background(colorResource(id = R.color.white)))
-    {
-        Box(modifier = Modifier
-            .align(alignment = Alignment.Center)
-            .size(200.dp)
-            .clip(CircleShape)
-            .background(Color(0xFFFF0000)))
-        {}
-    }
+    BanderaScreen()
 }
 
 @Preview(showBackground = true)
