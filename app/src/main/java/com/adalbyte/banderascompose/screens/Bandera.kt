@@ -23,9 +23,7 @@ fun BanderaScreen(modifier: Modifier = Modifier) {
                 .weight(1f)
                 .fillMaxHeight()
                 .background(Color(0xFF006341)) // verde
-        ) {
-            Text(text = stringResource(id = R.string.app_name))
-        }
+        ) {}
         Column(
             modifier = Modifier
                 .weight(1f)

@@ -21,6 +21,8 @@ fun BanderaMexico(modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun BanderaMexicoPreview() {
-    BanderaScreenPreview();
+    Surface {
+        BanderaMexico(modifier = Modifier.fillMaxSize())
+    }
 }
 
