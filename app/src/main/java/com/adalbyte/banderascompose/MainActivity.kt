@@ -5,10 +5,11 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.adalbyte.banderascompose.screens.BanderaScreen
 
 @Composable
 fun Bandera<NombrePais>(modifier: Modifier = Modifier) {
-    // Aqui va el Row/Column/Box con las franjas o formas
+    BanderaScreen()
 }
 
 @Preview(showBackground = true)
