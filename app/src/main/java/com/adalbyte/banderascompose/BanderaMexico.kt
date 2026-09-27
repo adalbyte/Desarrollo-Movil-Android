@@ -15,7 +15,7 @@ import com.adalbyte.banderascompose.screens.BanderaScreenPreview
 
 @Composable
 fun BanderaMexico(modifier: Modifier = Modifier) {
-    BanderaScreen();
+    BanderaScreen(modifier = Modifier.fillMaxSize());
 }
 
 @Preview(showBackground = true)
