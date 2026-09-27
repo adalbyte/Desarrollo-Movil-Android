@@ -7,38 +7,53 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester.Companion.createRefs
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.constraintlayout.compose.Dimension
 import com.adalbyte.banderascompose.R
 
 @Composable
 fun BanderaScreen(modifier: Modifier = Modifier) {
-    Row(modifier = modifier.fillMaxSize()) {
-        Column(
-            modifier = Modifier
-                .weight(1f)
-                .fillMaxHeight()
-                .background(Color(0xFF002654))
-        ) {}
-        Column(
-            modifier = Modifier
-                .weight(1f)
-                .fillMaxHeight()
-                .background(Color.White),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+    ConstraintLayout(modifier = modifier){
 
-        ) {}
-        Column(
-            modifier = Modifier
-                .weight(1f)
-                .fillMaxHeight()
-                .background(Color(0xFFCD1125))
-        ) {}
+        val lineaGuia1 = createGuidelineFromStart(0.3333f)
+        val lineaGuia2 = createGuidelineFromStart(0.6666f)
+
+        val (cajaAzul, cajaBlanca, cajaRoja) = createRefs()
+
+        Box(modifier = Modifier.background(Color(0xFF002654)).constrainAs(ref = cajaAzul){
+            start.linkTo(parent.start)
+            end.linkTo(lineaGuia1)
+            top.linkTo(parent.top)
+            bottom.linkTo(parent.bottom)
+            width = Dimension.fillToConstraints
+            height = Dimension.fillToConstraints
+        })
+
+        Box(modifier = Modifier.background(Color.White).constrainAs(ref = cajaBlanca){
+            start.linkTo(lineaGuia1)
+            end.linkTo(lineaGuia2)
+            top.linkTo(parent.top)
+            bottom.linkTo(parent.bottom)
+            width = Dimension.fillToConstraints
+            height = Dimension.fillToConstraints
+        })
+
+        Box(modifier = Modifier.background(Color(0xFFCD1125)).constrainAs(ref = cajaRoja){
+            start.linkTo(lineaGuia2)
+            end.linkTo(parent.end)
+            top.linkTo(parent.top)
+            bottom.linkTo(parent.bottom)
+            width = Dimension.fillToConstraints
+            height = Dimension.fillToConstraints
+        })
+
     }
 }
 
@@ -49,5 +64,3 @@ fun BanderaScreenPreview() {
         BanderaScreen(modifier = Modifier.fillMaxSize())
     }
 }
-
-
