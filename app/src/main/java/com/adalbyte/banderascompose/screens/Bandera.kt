@@ -2,6 +2,7 @@ package com.adalbyte.banderascompose.screens
 
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -21,6 +22,27 @@ fun BanderaScreen(modifier: Modifier = Modifier) {
         val w = size.width
         val h = size.height
         // drawRect(...), drawPath(...), drawCircle(...), etc.
+    }
+    Column(modifier = Modifier
+        .fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center){
+        Box(modifier = Modifier
+            .aspectRatio(1f)
+            .background(Color(0xFFFF0000))){
+            Box(modifier = Modifier
+                .align(Alignment.Center)
+                .fillMaxWidth(0.2f)
+                .fillMaxHeight(0.6f)
+                .background(Color.White)
+            )
+            Box(modifier = Modifier
+                .align(Alignment.Center)
+                .fillMaxWidth(0.6f)
+                .fillMaxHeight(0.2f)
+                .background(Color.White)
+            )
+        }
     }
 }
 
