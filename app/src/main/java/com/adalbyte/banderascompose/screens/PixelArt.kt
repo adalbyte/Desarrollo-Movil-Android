@@ -1,21 +1,20 @@
-package com.adalbyte.banderascompose
+package com.adalbyte.banderascompose.screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.adalbyte.banderascompose.screens.PixelArtScreen
 
 @Composable
-fun PixelArt(modifier: Modifier = Modifier) {
-    PixelArtScreen()
+fun PixelArtScreen(modifier: Modifier = Modifier) {
+
 }
 
 @Preview(showBackground = true)
 @Composable
-fun PixelArtPreview() {
+fun PixelArtScreenPreview() {
     Surface {
-        PixelArt(modifier = Modifier.fillMaxSize())
+        PixelArtScreen(modifier = Modifier.fillMaxSize())
     }
-}   
+}
