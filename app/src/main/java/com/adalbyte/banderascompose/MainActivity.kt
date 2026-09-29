@@ -7,7 +7,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.adalbyte.banderascompose.screens.BanderaScreen
 
-@Composabl
+@Composable
 fun Bandera<NombrePais>(modifier: Modifier = Modifier) {
     BanderaScreen()
 }
