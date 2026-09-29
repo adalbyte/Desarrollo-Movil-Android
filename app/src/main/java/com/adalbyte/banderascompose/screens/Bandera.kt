@@ -17,7 +17,11 @@ import com.adalbyte.banderascompose.R
 
 @Composable
 fun BanderaScreen(modifier: Modifier = Modifier) {
-
+    Canvas(modifier = modifier.fillMaxSize()) {
+        val w = size.width
+        val h = size.height
+        // drawRect(...), drawPath(...), drawCircle(...), etc.
+    }
 }
 
 @Preview(showBackground = true)
