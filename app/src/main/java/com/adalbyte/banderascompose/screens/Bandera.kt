@@ -10,12 +10,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.focus.FocusRequester.Companion.createRefs
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.constraintlayout.compose.Dimension
 import com.adalbyte.banderascompose.R
 
 val RombosShape = GenericShape { size, _ ->
@@ -28,22 +31,34 @@ val RombosShape = GenericShape { size, _ ->
 
 @Composable
 fun BanderaScreen(modifier: Modifier = Modifier) {
-    Box(
-        modifier = modifier.fillMaxSize().background(Color(0xFF009B3A)),
-        contentAlignment = Alignment.Center
-    ) {
-        Box(
-            modifier = Modifier
-                .fillMaxSize(0.75f)
-                .clip(RombosShape)
-                .background(Color(0xFFFEDF00))
-        )
-        Box(
-            modifier = Modifier
-                .size(90.dp)
-                .clip(CircleShape)
-                .background(Color(0xFF002776))
-        )
+    ConstraintLayout(modifier = modifier){
+        val (caja1, caja2, caja3) = createRefs()
+
+        Box(modifier = Modifier.background(Color(0xFF009B3A)).constrainAs(ref = caja1){
+            start.linkTo(parent.start)
+            end.linkTo(parent.end)
+            top.linkTo(parent.top)
+            bottom.linkTo(parent.bottom)
+            width = Dimension.fillToConstraints
+            height = Dimension.fillToConstraints
+        })
+
+        Box(modifier = Modifier.fillMaxSize(0.75f).clip(RombosShape).background(Color(0xFFFEDF00))
+            .constrainAs(ref = caja2){
+            start.linkTo(parent.start)
+            end.linkTo(parent.end)
+            top.linkTo(parent.top)
+            bottom.linkTo(parent.bottom)
+        })
+
+        Box(modifier = Modifier.size(90.dp).clip(CircleShape).background(Color(0xFF002776))
+            .constrainAs(ref = caja3){
+            start.linkTo(parent.start)
+            end.linkTo(parent.end)
+            top.linkTo(parent.top)
+            bottom.linkTo(parent.bottom)
+        })
+
     }
 }
 
