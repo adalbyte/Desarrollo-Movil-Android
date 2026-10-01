@@ -8,7 +8,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.adalbyte.banderascompose.screens.BanderaScreen
 
 @Composable
-fun BanderaEEUU(modifier: Modifier = Modifier) {
+fun BanderaEEUU(modifier: Modifier = Modifier.fillMaxSize()) {
     BanderaScreen()
 }
 
