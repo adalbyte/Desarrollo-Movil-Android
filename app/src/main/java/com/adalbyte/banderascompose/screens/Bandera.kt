@@ -14,6 +14,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.constraintlayout.compose.ConstraintLayout
 import com.adalbyte.banderascompose.R
 
 @Composable
@@ -21,8 +22,21 @@ fun BanderaScreen(modifier: Modifier = Modifier) {
     val redColor = Color(0xFFdc143c)
     val blueColor = Color(0xFF001e60)
 
-    Box(modifier = modifier,contentAlignment = Alignment.Center) {
-        Canvas(modifier = Modifier.fillMaxSize()) {
+    ConstraintLayout(
+        modifier = modifier
+    ) {
+        val (fondoCanvas) = createRefs()
+
+        Canvas(
+            modifier = Modifier
+                .fillMaxSize()
+                .constrainAs(fondoCanvas) {
+                    top.linkTo(parent.top)
+                    bottom.linkTo(parent.bottom)
+                    start.linkTo(parent.start)
+                    end.linkTo(parent.end)
+                }
+        ) {
             val width = size.width
             val height = size.height
 
