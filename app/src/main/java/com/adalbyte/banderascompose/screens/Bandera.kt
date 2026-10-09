@@ -15,6 +15,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.constraintlayout.compose.ConstraintLayout
 import com.adalbyte.banderascompose.R
 import kotlin.math.cos
 import kotlin.math.sin
@@ -42,15 +43,27 @@ fun estrellaPath(
 
 @Composable
 fun BanderaScreen(modifier: Modifier = Modifier) {
-    Canvas(modifier = modifier.fillMaxSize()) {
-        drawRect(color = Color(0xFFE30A17)) // fondo rojo
-        val cy = size.height / 2f
-        val rOut = size.height * 0.30f
-        drawCircle(color = Color.White, radius = rOut,
-            center = Offset(size.width * 0.38f, cy))
-        drawCircle(color = Color(0xFFE30A17), radius = size.height * 0.24f,
-            center = Offset(size.width * 0.38f + size.height * 0.09f, cy))
-        drawPath(estrellaPath(size.height / 1.5f, size.height / 2f, rExterior = 200f),Color(0xFFFFFFFF))
+    ConstraintLayout(modifier = modifier.fillMaxSize()) {
+        val (bandera) = createRefs()
+
+        Canvas(modifier = Modifier
+                .fillMaxSize()
+                .constrainAs(bandera) {
+                    centerTo(parent)
+                }){
+            drawRect(color = Color(0xFFE30A17))
+
+            val cy = size.height / 2f
+            val rOut = size.height * 0.30f
+
+            drawCircle(color = Color.White, radius = rOut,
+                center = Offset(size.width * 0.38f, cy))
+
+            drawCircle(color = Color(0xFFE30A17), radius = size.height * 0.24f,
+                center = Offset(size.width * 0.38f + size.height * 0.09f,cy))
+
+            drawPath(path = estrellaPath(cx = size.height / 1.5f,cy = size.height / 2f,rExterior = 200f),color = Color.White)
+        }
     }
 }
 
