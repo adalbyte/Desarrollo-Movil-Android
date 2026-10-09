@@ -18,6 +18,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.constraintlayout.compose.Dimension
 import com.adalbyte.banderascompose.R
 import kotlin.math.atan2
 import kotlin.math.cos
@@ -36,12 +38,31 @@ fun trianguloAsta(h: Float, apiceX: Float, theta: Float, d: Float): Path {
 
 @Composable
 fun BanderaScreen(modifier: Modifier = Modifier) {
-    Box(Modifier.fillMaxSize()) {
-        Column(Modifier.fillMaxSize()) {
-            Box(Modifier.weight(1f).fillMaxWidth().background(Color(0xff001489)))
-            Box(Modifier.weight(1f).fillMaxWidth().background(Color(0xFFFFB81C)))
-        }
-        Canvas(Modifier.fillMaxSize()) {
+    ConstraintLayout(modifier = modifier.fillMaxSize()) {
+        val (franjaAzul, franjaAmarilla, dibujo) = createRefs()
+        val mitad = createGuidelineFromTop(0.5f)
+
+        Box(modifier = Modifier.background(Color(0xFF001489)).constrainAs(franjaAzul) {
+            top.linkTo(parent.top)
+            bottom.linkTo(mitad)
+            start.linkTo(parent.start)
+            end.linkTo(parent.end)
+            height = Dimension.fillToConstraints
+            width = Dimension.fillToConstraints
+        })
+
+        Box(modifier = Modifier.background(Color(0xFFFFB81C)).constrainAs(franjaAmarilla) {
+            top.linkTo(mitad)
+            bottom.linkTo(parent.bottom)
+            start.linkTo(parent.start)
+            end.linkTo(parent.end)
+            height = Dimension.fillToConstraints
+            width = Dimension.fillToConstraints
+        })
+
+        Canvas(modifier = Modifier.fillMaxSize().constrainAs(dibujo) {
+            centerTo(parent)
+        }) {
             val w = size.width
             val h = size.height
 
