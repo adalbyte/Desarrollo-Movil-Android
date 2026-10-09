@@ -18,6 +18,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.constraintlayout.compose.ConstraintLayout
 import com.adalbyte.banderascompose.R
 import kotlin.div
 import kotlin.times
@@ -56,8 +57,13 @@ fun CruzCentrada(color: Color, grosor: Float) {
 
 @Composable
 fun BanderaScreen(modifier: Modifier = Modifier) {
-    Box(Modifier.fillMaxSize().background(Color(0xFF012169))) {
-        Canvas(Modifier.fillMaxSize()) {
+    ConstraintLayout(modifier = modifier.fillMaxSize().background(Color(0xFF012169))) {
+        val (diagonales, cruzBlanca, cruzRoja) = createRefs()
+
+        Canvas(modifier = Modifier.fillMaxSize().constrainAs(diagonales) {
+                    centerTo(parent)
+                }
+        ) {
             val w = size.width
             val h = size.height
             val u = h / 30f
