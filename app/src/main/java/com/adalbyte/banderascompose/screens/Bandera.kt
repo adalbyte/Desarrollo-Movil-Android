@@ -16,6 +16,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.constraintlayout.compose.Dimension
 import com.adalbyte.banderascompose.R
 import kotlin.math.cos
 import kotlin.math.sin
@@ -32,27 +34,48 @@ fun trianglePath(cx: Float, cy: Float, r: Float, rotationDeg: Float): Path {
     return path
 }
 
+
 @Composable
 fun BanderaScreen(modifier: Modifier = Modifier) {
-    Box(Modifier.fillMaxSize().background(Color.White)) {
-        Column(Modifier.fillMaxSize()) {
-            Spacer(Modifier.weight(15f))
-            Box(Modifier.weight(25f).fillMaxWidth().background(Color(0xFF0038B8)))
-            Spacer(Modifier.weight(80f))
-            Box(Modifier.weight(25f).fillMaxWidth().background(Color(0xFF0038B8)))
-            Spacer(Modifier.weight(15f))
-        }
-    }
+    ConstraintLayout(modifier = modifier.fillMaxSize().background(Color.White)) {
+        val (franjaSuperior, franjaInferior, triangulos) = createRefs()
 
-    Canvas(modifier = modifier.fillMaxSize()) {
-        val h = size.height
-        val azul = Color(0xFF0038B8)
-        val cx = size.width / 2f
-        val cy = h / 2f
-        val r = h * 30f / 160f
-        val trazo = Stroke(width = h * 5.5f / 160f, join = StrokeJoin.Miter)
-        drawPath(trianglePath(cx, cy, r, -90f), color = azul, style = trazo)
-        drawPath(trianglePath(cx, cy, r, 90f), color = azul, style = trazo)
+        val guia15 = createGuidelineFromTop(0.10f)
+        val guia40 = createGuidelineFromTop(0.25f)
+        val guia60 = createGuidelineFromTop(0.75f)
+        val guia85 = createGuidelineFromTop(0.90f)
+
+        Box(
+            modifier = Modifier.fillMaxWidth().background(Color(0xFF0038B8))
+                .constrainAs(franjaSuperior) {
+                    top.linkTo(guia15)
+                    bottom.linkTo(guia40)
+                    height = Dimension.fillToConstraints
+                }
+        )
+
+        Box(modifier = Modifier.fillMaxWidth().background(Color(0xFF0038B8))
+                .constrainAs(franjaInferior) {
+                    top.linkTo(guia60)
+                    bottom.linkTo(guia85)
+                    height = Dimension.fillToConstraints
+                }
+        )
+
+        Canvas(modifier = Modifier.fillMaxSize()
+                .constrainAs(triangulos) {
+                    centerTo(parent)
+                }) {
+            val h = size.height
+            val azul = Color(0xFF0038B8)
+            val cx = size.width / 2f
+            val cy = h / 2f
+            val r = h * 30f / 160f
+            val trazo = Stroke(width = h * 5.5f / 160f, join = StrokeJoin.Miter)
+
+            drawPath(trianglePath(cx, cy, r, -90f), color = azul, style = trazo)
+            drawPath(trianglePath(cx, cy, r, 90f), color = azul, style = trazo)
+        }
     }
 }
 
