@@ -18,6 +18,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.constraintlayout.compose.ConstraintLayout
 import com.adalbyte.banderascompose.R
 import kotlin.math.cos
 import kotlin.math.sin
@@ -67,8 +68,13 @@ fun avePath(cx: Float, cy: Float, s: Float): Path {
 
 @Composable
 fun BanderaScreen(modifier: Modifier = Modifier) {
-    Box(Modifier.fillMaxSize().background(Color.Black)) {
-        Canvas(Modifier.fillMaxSize()) {
+    ConstraintLayout(modifier = modifier.fillMaxSize().background(Color.Black)) {
+        val (dibujo) = createRefs()
+
+        Canvas(modifier = Modifier.fillMaxSize().constrainAs(dibujo) {
+                    centerTo(parent)
+                }
+        ) {
             val w = size.width
             val h = size.height
             val trianguloRojo = Path().apply {
