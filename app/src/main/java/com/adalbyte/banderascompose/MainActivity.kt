@@ -9,12 +9,12 @@ import com.adalbyte.banderascompose.screens.InicioScreen
 
 @Composable
 fun Inicio(modifier: Modifier = Modifier) {
-    InicioScreen()
+    InicioScreen(modifier = modifier.fillMaxSize())
 }
 
 @Preview(showBackground = true)
 @Composable
-fun PruebasPreview() {
+fun InicioPreview() {
     Surface {
         Inicio(modifier = Modifier.fillMaxSize())
     }

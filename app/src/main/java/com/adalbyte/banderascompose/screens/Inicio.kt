@@ -13,7 +13,7 @@ fun InicioScreen(modifier: Modifier = Modifier) {
 
 @Preview(showBackground = true)
 @Composable
-fun BanderaScreenPreview() {
+fun InicioScreenPreview() {
     Surface {
         InicioScreen(modifier = Modifier.fillMaxSize())
     }
