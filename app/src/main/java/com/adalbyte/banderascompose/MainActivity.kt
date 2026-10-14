@@ -9,7 +9,7 @@ import com.adalbyte.banderascompose.screens.InicioScreen
 
 @Composable
 fun Inicio(modifier: Modifier = Modifier) {
-    InicioScreen()
+    InicioScreen(modifier)
 }
 
 @Preview(showBackground = true)
