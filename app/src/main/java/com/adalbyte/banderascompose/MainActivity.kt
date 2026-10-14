@@ -5,17 +5,17 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.adalbyte.banderascompose.screens.BanderaScreen
+import com.adalbyte.banderascompose.screens.InicioScreen
 
 @Composable
-fun Bandera<NombrePais>(modifier: Modifier = Modifier) {
-    BanderaScreen()
+fun Inicio(modifier: Modifier = Modifier) {
+    InicioScreen()
 }
 
 @Preview(showBackground = true)
 @Composable
-fun Bandera<NombrePais>Preview() {
+fun PruebasPreview() {
     Surface {
-        Bandera<NombrePais>(modifier = Modifier.fillMaxSize())
+        Inicio(modifier = Modifier.fillMaxSize())
     }
 }   
