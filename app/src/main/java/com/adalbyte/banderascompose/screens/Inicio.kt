@@ -22,7 +22,7 @@ fun InicioScreen(modifier: Modifier = Modifier) {
     Column(modifier = modifier) {
         Text(modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center, text = resultado.toString(), fontSize = 50.sp)
         Button(modifier= Modifier.fillMaxWidth(), onClick = {resultado++}) {
-            Text("Calcular")
+            Text("Presioname")
         }
     }
 }
