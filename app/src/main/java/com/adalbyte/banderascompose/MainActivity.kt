@@ -22,7 +22,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             PracticaTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    InicioScreen(modifier = Modifier.fillMaxSize().padding(innerPadding))
+                    val ListaElementos = rememberSaveable { mutableStateListOf<String>("Ana", "Luis", "Carlos", "María") }
+                    InicioScreen(modifier = Modifier.fillMaxSize().padding(innerPadding), ListaElementos)
                 }
             }
         }
@@ -33,6 +34,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun InicioPreview() {
     Surface {
-        InicioScreen(modifier = Modifier.fillMaxSize())
+        val ListaElementos = rememberSaveable { mutableStateListOf<String>("Ana", "Luis", "Carlos", "María") }
+        InicioScreen(modifier = Modifier.fillMaxSize(), ListaElementos)
     }
 }   
