@@ -30,14 +30,11 @@ fun InicioScreen(modifier: Modifier = Modifier) {
             Row(modifier = Modifier.padding(12.dp)){
                 TextField(modifier = Modifier.weight(1f).border(1.dp, Color(0xFF000000)), value = resultado, onValueChange = {it -> if(it.isDigitsOnly()) resultado = it}, singleLine = true, keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number))
             }
-            Row(modifier = Modifier.padding(12.dp)){
-                Button(modifier= Modifier.fillMaxWidth(), onClick = {}) {
-                    Text("Calcular")
-                }
-            }
-
+        }
+        if (!resultado.isEmpty())
+        {
             for (i in 1..parseInt(resultado)){
-                Text(text = "A")
+                Text(text = "A", modifier = Modifier.padding(start =  20.dp))
             }
         }
     }
